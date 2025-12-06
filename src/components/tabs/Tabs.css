@@ -151,3 +151,26 @@
   color: var(--mts-red);
   border-bottom-color: var(--mts-red);
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .tab-container {
+    padding: 24px 20px;
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: 1fr; /* Stack vertically on mobile */
+  }
+  
+  .card {
+    padding: 24px;
+  }
+  
+  .metric-value {
+    font-size: 2.5rem;
+  }
+
+  .tab-header h2 {
+    font-size: 1.75rem;
+  }
+}

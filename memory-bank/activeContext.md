@@ -5,11 +5,13 @@ The application is functional and meets the user's initial requirements for a de
 - Basic hierarchy visualization is complete.
 - Interaction (expand/collapse) is working.
 - Custom visuals (labels, health colors, employee icons) are implemented.
-- UI Overlay shows detailed information.
+- UI Overlay shows detailed information. On desktop, this is a floating panel. On mobile, it adapts to a bottom sheet or toggleable view.
 - **Data Model Update**: The mock data has been restructured to reflect the specific MTS Group hierarchy (Telecom, Ecosystem -> Fintech, Media, Adtech, Urent, MWS).
 - **Tabbed Interface**: Expanding the application to include dedicated tabs for "Product", "Team", and "Employee" alongside the existing graph demo.
+- **Mobile Responsiveness**: Adapting the layout for mobile devices while preserving desktop functionality.
 
 ## Recent Changes
+- **Mobile Adaptation**: Started implementing responsive design for the navigation, dashboard overlay, and tab views.
 - **Documentation Update**: Updated project brief and context files to include new tab requirements.
 - **Mock Data Reorganization**: Updated `mockData.ts` to match the specific business unit and product structure provided in the Mermaid diagram.
   - Root: MTS Group.

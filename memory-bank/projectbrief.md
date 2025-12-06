@@ -13,6 +13,7 @@ A web-based demonstration dashboard for visualizing the organizational health of
 - **Detailed Inspection**: Hovering over a node provides detailed metrics, including roles and performance descriptions for employees.
 - **Mock Data**: Generates a consistent, randomized data structure for demonstration purposes.
 - **Localization**: Full Russian interface and data.
+- **Mobile Responsiveness**: Adaptive layout for mobile devices (smartphones/tablets) ensuring usability across screen sizes.
 
 ## Extended Demo Features
 The dashboard now includes specific demo tabs for different organizational levels:

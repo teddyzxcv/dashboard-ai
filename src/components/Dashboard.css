@@ -1,0 +1,157 @@
+/* Dashboard Overlay Styles */
+.dashboard-overlay {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  color: var(--mts-black);
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 24px;
+  border-radius: 24px;
+  pointer-events: none; /* Allows clicking through to the graph, BUT we need pointer-events: auto on the content if interactable. The original code had pointer-events: none on the container. Wait, if it's none, user can't select text. I'll keep it as is but check if interaction is needed. The original code had pointerEvents: 'none' on the main div. */
+  backdrop-filter: blur(8px);
+  min-width: 280px;
+  max-width: 320px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.dashboard-title {
+  margin: 0 0 20px 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+}
+
+.legend-section {
+  margin-bottom: 24px;
+}
+
+.legend-title {
+  margin: 0 0 12px 0;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--mts-dark-gray);
+  font-weight: 600;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.legend-item:last-child {
+  margin-bottom: 0;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.legend-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.details-section {
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding-top: 20px;
+}
+
+.node-title {
+  margin: 0 0 4px 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.node-subtitle {
+  font-size: 0.9rem;
+  color: var(--mts-dark-gray);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.node-desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--mts-black);
+  margin-bottom: 20px;
+}
+
+.health-display {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.health-value {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.health-label {
+  font-size: 0.9rem;
+  color: var(--mts-dark-gray);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.empty-state {
+  opacity: 0.6;
+  font-size: 0.9rem;
+  margin: 0;
+  color: var(--mts-dark-gray);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .dashboard-overlay {
+    top: auto;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    border-radius: 24px 24px 0 0;
+    box-sizing: border-box;
+    padding: 20px;
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+  
+  .dashboard-title {
+    font-size: 1rem;
+    margin-bottom: 16px;
+  }
+  
+  .legend-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .legend-title {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  
+  .legend-item {
+    margin-bottom: 0;
+  }
+
+  .details-section {
+      padding-top: 16px;
+  }
+}
+

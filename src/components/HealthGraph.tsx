@@ -14,7 +14,30 @@ interface HealthGraphProps {
 const HealthGraph: React.FC<HealthGraphProps> = ({ onNodeHover }) => {
   const [graphData, setGraphData] = useState<GraphData>(getInitialGraphData());
   const [expandedNodeIds, setExpandedNodeIds] = useState<Set<string>>(new Set());
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
   const fgRef = useRef<any>(null);
+
+  useEffect(() => {
+    // Resize Observer to handle responsive container sizing
+    const observeTarget = containerRef.current;
+    if (!observeTarget) return;
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      if (entries[0]) {
+        const { width, height } = entries[0].contentRect;
+        setDimensions({ width, height });
+      }
+    });
+
+    resizeObserver.observe(observeTarget);
+
+    return () => {
+      if (observeTarget) {
+        resizeObserver.unobserve(observeTarget);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (fgRef.current) {
@@ -93,9 +116,11 @@ const HealthGraph: React.FC<HealthGraphProps> = ({ onNodeHover }) => {
   }, []);
 
   return (
-    <div style={{ width: '100vw', height: '100vh', backgroundColor: '#F2F3F7' }}>
+    <div ref={containerRef} style={{ width: '100%', height: '100%', backgroundColor: '#F2F3F7' }}>
       <ForceGraph2D
         ref={fgRef}
+        width={dimensions.width}
+        height={dimensions.height}
         graphData={graphData}
         nodeLabel="name"
         nodeCanvasObject={handleNodeCanvasObject}
