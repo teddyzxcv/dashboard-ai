@@ -1,3 +1,5 @@
+import hierarchyData from './hierarchy.yaml';
+
 export type NodeType = 'Company' | 'BusinessUnit' | 'Product' | 'Team' | 'Employee';
 
 export interface HierarchyNode {
@@ -12,115 +14,91 @@ export interface HierarchyNode {
 
 const generateRandomHealth = () => Math.floor(Math.random() * 101);
 
-const typeLabels: Record<NodeType, string> = {
-  Company: 'Компания',
-  BusinessUnit: 'Бизнес-юнит',
-  Product: 'Продукт',
-  Team: 'Команда',
-  Employee: 'Сотрудник'
-};
 
-const generateChildren = (
-  parentId: string,
-  level: number,
-  count: number
-): HierarchyNode[] => {
-  const types: NodeType[] = ['Company', 'BusinessUnit', 'Product', 'Team', 'Employee'];
-  const currentType = types[level];
+// Helper to generate random employees for a team
+const generateEmployees = (teamId: string, count: number): HierarchyNode[] => {
+  const firstNames = ['Иван', 'Мария', 'Дмитрий', 'Анна', 'Сергей', 'Ольга', 'Алексей', 'Елена', 'Андрей', 'Татьяна'];
+  const lastNames = ['Иванов', 'Петрова', 'Сидоров', 'Смирнова', 'Кузнецов', 'Попова', 'Соколов', 'Лебедева', 'Козлов', 'Новикова'];
+  const roles = ['QA Инженер', 'Продакт Менеджер', 'Frontend Разработчик', 'Backend Разработчик', 'DevOps Инженер', 'Data Scientist', 'UX Дизайнер'];
   
-  if (level >= types.length) return [];
+  const descriptions = [
+    "Стабильно выдает качественный код и менторит младших сотрудников.",
+    "Отлично находит граничные случаи, но стоит улучшить документацию.",
+    "Лидирует новую инициативу по миграции в облако.",
+    "Отличный коммуникатор, связующее звено между технарями и бизнесом.",
+    "Недавно в команде, показывает отличный потенциал и быстро учится.",
+    "Эксперт в своей области, к нему идут со сложными вопросами."
+  ];
 
-  return Array.from({ length: count }).map((_, index) => {
-    const id = `${parentId}-${index}`;
-    let name = `${typeLabels[currentType]} ${index + 1}`;
-    let role: string | undefined;
-    let desc: string | undefined;
+  return Array.from({ length: count }).map((_, i) => {
+    const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+    let lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
     
-    // Add some flavor names
-    if (currentType === 'BusinessUnit') {
-      const names = ['Телеком', 'Финтех', 'Медиа', 'Облако', 'Ритейл'];
-      name = names[index % names.length] || name;
-    } else if (currentType === 'Product') {
-      const names = ['KION', 'МТС Музыка', 'МТС Банк', 'Умный Дом', 'Облачное Хранилище', 'Путешествия'];
-      name = names[index % names.length] || name;
-    } else if (currentType === 'Employee') {
-      const firstNames = ['Иван', 'Мария', 'Дмитрий', 'Анна', 'Сергей', 'Ольга', 'Алексей', 'Елена', 'Андрей', 'Татьяна'];
-      const lastNames = ['Иванов', 'Петрова', 'Сидоров', 'Смирнова', 'Кузнецов', 'Попова', 'Соколов', 'Лебедева', 'Козлов', 'Новикова'];
-      
-      const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-      // Simple logic to match gender for last name endings (not perfect but better than mismatch)
-      let lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-      
-      // Basic heuristic: if first name ends in 'а' or 'я' (likely female), ensure last name ends in 'а'
-      // If first name consonant (likely male), ensure last name not 'а'
-      // This is a simplification for the demo.
-      const isFemale = ['а', 'я'].includes(firstName.slice(-1));
-      if (isFemale && !lastName.endsWith('а')) {
-        lastName += 'а'; // Ivanov -> Ivanova
-      } else if (!isFemale && lastName.endsWith('а')) {
-        lastName = lastName.slice(0, -1); // Ivanova -> Ivanov
-      }
-      
-      name = `${firstName} ${lastName}`;
-      
-      const roles = ['QA Инженер', 'Продакт Менеджер', 'Frontend Разработчик', 'Backend Разработчик', 'DevOps Инженер', 'Data Scientist', 'UX Дизайнер'];
-      role = roles[Math.floor(Math.random() * roles.length)];
-      
-      const descriptions = [
-        "Стабильно выдает качественный код и менторит младших сотрудников.",
-        "Отлично находит граничные случаи, но стоит улучшить документацию.",
-        "Лидирует новую инициативу по миграции в облако.",
-        "Отличный коммуникатор, связующее звено между технарями и бизнесом.",
-        "Недавно в команде, показывает отличный потенциал и быстро учится.",
-        "Эксперт в своей области, к нему идут со сложными вопросами."
-      ];
-      desc = descriptions[Math.floor(Math.random() * descriptions.length)];
+    const isFemale = ['а', 'я'].includes(firstName.slice(-1));
+    if (isFemale && !lastName.endsWith('а')) {
+      lastName += 'а';
+    } else if (!isFemale && lastName.endsWith('а')) {
+      lastName = lastName.slice(0, -1);
     }
 
     return {
-      id,
-      name,
-      type: currentType,
+      id: `${teamId}-emp-${i}`,
+      name: `${firstName} ${lastName}`,
+      type: 'Employee',
       health: generateRandomHealth(),
-      children: [], 
-      role,
-      desc
+      role: roles[Math.floor(Math.random() * roles.length)],
+      desc: descriptions[Math.floor(Math.random() * descriptions.length)],
+      children: []
     };
   });
 };
 
-// Helper to build a tree. 
-// Root (MTS) -> 3 BUs -> 2 Products each -> 2 Teams each -> 3 Employees each
-// Total nodes: 1 + 3 + (3*2) + (3*2*2) + (3*2*2*3) = 1 + 3 + 6 + 12 + 36 = 58 nodes. manageable.
+// Helper to generate random teams for a product
+const generateTeams = (productId: string, count: number): HierarchyNode[] => {
+  const teamNames = ['Alpha', 'Beta', 'Gamma', 'Delta', 'Omega', 'Core', 'Platform', 'Feature'];
+  
+  return Array.from({ length: count }).map((_, i) => {
+    const teamId = `${productId}-team-${i}`;
+    const name = `Команда ${teamNames[i % teamNames.length]}`;
+    return {
+      id: teamId,
+      name: name,
+      type: 'Team',
+      health: generateRandomHealth(),
+      children: generateEmployees(teamId, 3) // 3 employees per team
+    };
+  });
+};
+
+// Recursive function to process YAML data
+const processYamlNode = (node: any, parentId: string | null = null, index: number = 0): HierarchyNode => {
+  // Use provided ID or generate one
+  const id = node.id || (parentId ? `${parentId}-${index}` : 'root');
+  const type = node.type as NodeType;
+  
+  let children: HierarchyNode[] = [];
+
+  // If YAML has explicit children, process them recursively
+  if (node.children && Array.isArray(node.children)) {
+    children = node.children.map((child: any, i: number) => processYamlNode(child, id, i));
+  } 
+  // If it's a Product leaf in the YAML, generate mock Teams/Employees
+  else if (type === 'Product') {
+    // Generate 1-2 teams per product
+    children = generateTeams(id, Math.floor(Math.random() * 2) + 1);
+  }
+
+  return {
+    id,
+    name: node.name,
+    type,
+    health: generateRandomHealth(),
+    children
+  };
+};
 
 export const generateFullTree = (): HierarchyNode => {
-  const root: HierarchyNode = {
-    id: 'root',
-    name: 'МТС',
-    type: 'Company',
-    health: generateRandomHealth(),
-    children: [],
-  };
-
-  // Level 1: Business Units
-  root.children = generateChildren(root.id, 1, 4); // 4 BUs
-
-  // Level 2: Products
-  root.children.forEach(bu => {
-    bu.children = generateChildren(bu.id, 2, 3); // 3 Products per BU
-    
-    // Level 3: Teams
-    bu.children.forEach(prod => {
-      prod.children = generateChildren(prod.id, 3, 2); // 2 Teams per Product
-
-      // Level 4: Employees
-      prod.children.forEach(team => {
-        team.children = generateChildren(team.id, 4, 4); // 4 Employees per Team
-      });
-    });
-  });
-
-  return root;
+  return processYamlNode(hierarchyData);
 };
 
 export const mockData = generateFullTree();

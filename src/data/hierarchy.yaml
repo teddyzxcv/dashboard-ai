@@ -1,0 +1,94 @@
+name: Группа МТС
+type: Company
+children:
+  - name: ПАО «МТС» (Телеком)
+    type: BusinessUnit
+    id: telecom
+    children:
+      - name: Мобильная связь
+        type: Product
+      - name: Фиксированный интернет
+        type: Product
+      - name: Телевидение (IPTV/кабельное)
+        type: Product
+      - name: Корпоративные решения
+        type: Product
+  - name: «Экосистема МТС»
+    type: BusinessUnit
+    id: ecosystem
+    children:
+      - name: МТС Финтех
+        type: BusinessUnit
+        id: fintech
+        children:
+          - name: МТС Банк
+            type: Product
+          - name: МТС Деньги
+            type: Product
+          - name: МТС Страхование
+            type: Product
+          - name: МТС Инвестиции
+            type: Product
+          - name: Факторинг
+            type: Product
+      - name: МТС Медиа (ON Медиа)
+        type: BusinessUnit
+        id: media
+        children:
+          - name: Кинотеатр KION
+            type: Product
+          - name: Музыкальный стриминг КИОН Музыка
+            type: Product
+          - name: Книжный сервис КИОН Строки
+            type: Product
+          - name: Продюсерский центр KIONFILM
+            type: Product
+          - name: Билетные системы Базис/Ticketscloud
+            type: Product
+          - name: Сервис заказа еды Bartello
+            type: Product
+      - name: МТС Adtech
+        type: BusinessUnit
+        id: adtech
+        children:
+          - name: МТС Маркетолог
+            type: Product
+          - name: МТС OmniChannel
+            type: Product
+          - name: Маркетолог PRO
+            type: Product
+          - name: МТС DSP
+            type: Product
+          - name: МедиаСкаут
+            type: Product
+          - name: Рекламная биржа (AdEx)
+            type: Product
+      - name: МТС Юрент
+        type: BusinessUnit
+        id: urent
+        children:
+          - name: Аренда самокатов
+            type: Product
+          - name: Аренда велосипедов
+            type: Product
+          - name: Аренда пауэрбанков
+            type: Product
+          - name: Интеграция с Яндекс Go
+            type: Product
+      - name: MWS (МТС Web Services)
+        type: BusinessUnit
+        id: mws
+        children:
+          - name: "IaaS: вычисления и хранение"
+            type: Product
+          - name: "SaaS: бизнес-приложения"
+            type: Product
+          - name: "DBaaS: PostgreSQL, Arenadata"
+            type: Product
+          - name: "SECaaS: кибербезопасность"
+            type: Product
+          - name: "NaaS: сеть и медиа"
+            type: Product
+          - name: "ИИ-облако, MWS GPT"
+            type: Product
+

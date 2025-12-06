@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import ForceGraph2D from 'react-force-graph-2d';
 import { 
   getInitialGraphData, 
@@ -15,6 +15,14 @@ const HealthGraph: React.FC<HealthGraphProps> = ({ onNodeHover }) => {
   const [graphData, setGraphData] = useState<GraphData>(getInitialGraphData());
   const [expandedNodeIds, setExpandedNodeIds] = useState<Set<string>>(new Set());
   const fgRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (fgRef.current) {
+      // Adjust forces to spread nodes out more
+      fgRef.current.d3Force('charge').strength(-100); // Stronger repulsion
+      fgRef.current.d3Force('link').distance(50);   // Longer links
+    }
+  }, []);
 
   const handleNodeClick = useCallback((node: any) => {
     const nodeId = node.id;
