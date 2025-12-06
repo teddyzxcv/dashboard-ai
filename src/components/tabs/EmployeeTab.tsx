@@ -67,7 +67,7 @@ const EmployeeTab: React.FC = () => {
           <div className="card-content">
             <div className="list-item">
               <span>Burnout Risk</span>
-              <span className="tag">Low</span>
+              <span className="tag low">Low</span>
             </div>
           </div>
         </div>

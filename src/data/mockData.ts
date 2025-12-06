@@ -128,7 +128,7 @@ export interface GraphData {
 export const getNodeColor = (health: number) => {
   if (health >= 80) return '#4ade80'; // Green
   if (health >= 40) return '#facc15'; // Yellow
-  return '#f87171'; // Red
+  return '#FF0032'; // Red (MTS Brand)
 };
 export const getNodeSize = (type: NodeType) => {
   switch (type) {

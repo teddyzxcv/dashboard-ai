@@ -34,7 +34,7 @@ function Dashboard() {
             <span className="legend-text">Внимание (40 - 79)</span>
           </div>
           <div className="legend-item">
-            <span className="legend-dot" style={{ backgroundColor: '#f87171', boxShadow: '0 0 0 2px rgba(248, 113, 113, 0.2)' }}></span>
+            <span className="legend-dot" style={{ backgroundColor: '#FF0032', boxShadow: '0 0 0 2px rgba(255, 0, 50, 0.2)' }}></span>
             <span className="legend-text">Критично (0 - 39)</span>
           </div>
         </div>

@@ -115,6 +115,21 @@
   font-weight: 600;
 }
 
+.tag.warning {
+  background-color: var(--mts-red);
+  color: var(--mts-white);
+}
+
+.tag.low {
+  background-color: #4ade80; /* Green */
+  color: #064e3b; /* Dark green text for contrast */
+}
+
+.tag.high {
+  background-color: var(--mts-red);
+  color: var(--mts-white);
+}
+
 .btn-action {
   background-color: var(--mts-red);
   color: white;

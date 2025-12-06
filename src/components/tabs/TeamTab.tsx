@@ -50,7 +50,7 @@ const TeamTab: React.FC = () => {
           <div className="card-content">
             <div className="list-item">
               <span>Пропущенные дедлайны &gt; 2</span>
-              <span className="tag">Warning</span>
+              <span className="tag warning">Warning</span>
             </div>
           </div>
         </div>
