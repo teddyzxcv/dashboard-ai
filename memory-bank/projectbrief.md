@@ -12,9 +12,11 @@ A web-based demonstration dashboard for visualizing the organizational health of
 - **Expand/Collapse**: Users can navigate the tree by clicking nodes to expand or collapse their children.
 - **Detailed Inspection**: Hovering over a node provides detailed metrics, including roles and performance descriptions for employees.
 - **Mock Data**: Generates a consistent, randomized data structure for demonstration purposes.
+- **Localization**: Full Russian interface and data.
 
 ## Technology Stack
 - **Frontend**: React 19, Vite, TypeScript
 - **Visualization**: `react-force-graph-2d`
 - **Styling**: CSS (Dark Mode)
+
 

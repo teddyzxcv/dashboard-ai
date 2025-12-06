@@ -37,3 +37,4 @@ graph TD
 - **On-Demand Loading (Mocked)**: The graph does not load the entire tree at once. It starts with the root and adds nodes to the dataset as the user expands them.
 - **Canvas Customization**: extending the default force graph rendering context to add labels and icons directly to the canvas layer for performance and specific visual requirements.
 
+

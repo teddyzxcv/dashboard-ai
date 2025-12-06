@@ -12,11 +12,14 @@ The application is functional and meets the user's initial requirements for a de
 - Updated health color logic (Green ≥ 80, Yellow 40-79, Red < 40).
 - Added "Role" and "Description" fields to Employee nodes.
 - Added a "person" icon to Employee nodes in the graph.
+- Localized the entire application to Russian (UI, Documentation, Mock Data).
 
 ## Next Steps
-- None currently specified by the user. The project is in a "ready for demo" state.
+- Verify the Russian translations and layout adjustments.
+- Present the demo.
 
 ## Active Decisions
 - **Visual Style**: Sticking to a dark high-contrast theme for dashboard appeal.
 - **Icon Implementation**: Using direct Canvas API calls (`ctx.arc`, etc.) for icons instead of loading external images to keep the demo self-contained and fast.
+
 

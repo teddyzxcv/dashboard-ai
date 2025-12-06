@@ -67,36 +67,21 @@ const HealthGraph: React.FC<HealthGraphProps> = ({ onNodeHover }) => {
     // Draw Node
     ctx.beginPath();
     ctx.arc(node.x, node.y, radius, 0, 2 * Math.PI, false);
-    ctx.fillStyle = node.color || '#6E7781';
+    ctx.fillStyle = node.color || '#ffffff';
     ctx.fill();
     
-    // Draw Border (White border for separation on light bg)
-    ctx.strokeStyle = '#FFFFFF';
-    ctx.lineWidth = 2 / globalScale;
+    // Draw Border (optional, for better visibility)
+    ctx.strokeStyle = '#000000';
+    ctx.lineWidth = 1.5 / globalScale;
     ctx.stroke();
 
     // Draw Label
-    ctx.font = `600 ${fontSize}px Montserrat, sans-serif`;
+    ctx.font = `600 ${fontSize}px MTSText, Montserrat, sans-serif`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillStyle = '#1D2023'; // MTS Black
     // Position text below the node
     ctx.fillText(label, node.x, node.y + radius + fontSize);
-
-    // Draw Icon for Employee
-    if (node.type === 'Employee') {
-      const iconSize = radius * 1.2;
-      // Draw a simple person-like shape or symbol
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-      // Head
-      ctx.beginPath();
-      ctx.arc(node.x, node.y - radius * 0.2, iconSize * 0.4, 0, 2 * Math.PI, false);
-      ctx.fill();
-      // Body
-      ctx.beginPath();
-      ctx.arc(node.x, node.y + radius * 0.5, iconSize * 0.6, Math.PI, 2 * Math.PI, false);
-      ctx.fill();
-    }
   }, []);
 
   return (

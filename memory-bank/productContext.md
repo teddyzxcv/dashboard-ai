@@ -11,4 +11,6 @@ A dynamic, interactive force-directed graph that allows "drilling down" into spe
 2.  **Immediate Feedback**: Color coding provides instant status recognition.
 3.  **Depth of Information**: While the graph shows the big picture, the overlay provides specific quantitative and qualitative data (roles, descriptions).
 4.  **Aesthetic**: A dark-themed, modern "dashboard" look suitable for a demo presentation.
+5.  **Localization**: Fully localized in Russian to suit the target audience.
+
 

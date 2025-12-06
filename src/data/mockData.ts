@@ -12,6 +12,14 @@ export interface HierarchyNode {
 
 const generateRandomHealth = () => Math.floor(Math.random() * 101);
 
+const typeLabels: Record<NodeType, string> = {
+  Company: 'Компания',
+  BusinessUnit: 'Бизнес-юнит',
+  Product: 'Продукт',
+  Team: 'Команда',
+  Employee: 'Сотрудник'
+};
+
 const generateChildren = (
   parentId: string,
   level: number,
@@ -24,32 +32,47 @@ const generateChildren = (
 
   return Array.from({ length: count }).map((_, index) => {
     const id = `${parentId}-${index}`;
-    let name = `${currentType} ${index + 1}`;
+    let name = `${typeLabels[currentType]} ${index + 1}`;
     let role: string | undefined;
     let desc: string | undefined;
     
     // Add some flavor names
     if (currentType === 'BusinessUnit') {
-      const names = ['Telecom', 'Fintech', 'Media', 'Cloud', 'Retail'];
+      const names = ['Телеком', 'Финтех', 'Медиа', 'Облако', 'Ритейл'];
       name = names[index % names.length] || name;
     } else if (currentType === 'Product') {
-      const names = ['Kion', 'MTS Music', 'MTS Bank App', 'Smart Home', 'Cloud Storage', 'Travel'];
+      const names = ['KION', 'МТС Музыка', 'МТС Банк', 'Умный Дом', 'Облачное Хранилище', 'Путешествия'];
       name = names[index % names.length] || name;
     } else if (currentType === 'Employee') {
-      const firstNames = ['Ivan', 'Maria', 'Dmitry', 'Anna', 'Sergey', 'Olga'];
-      const lastNames = ['Ivanov', 'Petrova', 'Sidorov', 'Smirnova', 'Kuznetsov', 'Popova'];
-      name = `${firstNames[Math.floor(Math.random() * firstNames.length)]} ${lastNames[Math.floor(Math.random() * lastNames.length)]}`;
+      const firstNames = ['Иван', 'Мария', 'Дмитрий', 'Анна', 'Сергей', 'Ольга', 'Алексей', 'Елена', 'Андрей', 'Татьяна'];
+      const lastNames = ['Иванов', 'Петрова', 'Сидоров', 'Смирнова', 'Кузнецов', 'Попова', 'Соколов', 'Лебедева', 'Козлов', 'Новикова'];
       
-      const roles = ['QA Engineer', 'Product Manager', 'Frontend Developer', 'Backend Developer', 'DevOps Engineer', 'Data Scientist', 'UX Designer'];
+      const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+      // Simple logic to match gender for last name endings (not perfect but better than mismatch)
+      let lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+      
+      // Basic heuristic: if first name ends in 'а' or 'я' (likely female), ensure last name ends in 'а'
+      // If first name consonant (likely male), ensure last name not 'а'
+      // This is a simplification for the demo.
+      const isFemale = ['а', 'я'].includes(firstName.slice(-1));
+      if (isFemale && !lastName.endsWith('а')) {
+        lastName += 'а'; // Ivanov -> Ivanova
+      } else if (!isFemale && lastName.endsWith('а')) {
+        lastName = lastName.slice(0, -1); // Ivanova -> Ivanov
+      }
+      
+      name = `${firstName} ${lastName}`;
+      
+      const roles = ['QA Инженер', 'Продакт Менеджер', 'Frontend Разработчик', 'Backend Разработчик', 'DevOps Инженер', 'Data Scientist', 'UX Дизайнер'];
       role = roles[Math.floor(Math.random() * roles.length)];
       
       const descriptions = [
-        "Consistently delivers high-quality code and mentors juniors.",
-        "Great at identifying edge cases, but needs to improve on documentation.",
-        "Leading the new initiative for cloud migration.",
-        "Excellent communicator, bridges the gap between tech and business.",
-        "Recently joined, showing great potential and rapid learning.",
-        "Expert in their field, go-to person for complex issues."
+        "Стабильно выдает качественный код и менторит младших сотрудников.",
+        "Отлично находит граничные случаи, но стоит улучшить документацию.",
+        "Лидирует новую инициативу по миграции в облако.",
+        "Отличный коммуникатор, связующее звено между технарями и бизнесом.",
+        "Недавно в команде, показывает отличный потенциал и быстро учится.",
+        "Эксперт в своей области, к нему идут со сложными вопросами."
       ];
       desc = descriptions[Math.floor(Math.random() * descriptions.length)];
     }
@@ -73,7 +96,7 @@ const generateChildren = (
 export const generateFullTree = (): HierarchyNode => {
   const root: HierarchyNode = {
     id: 'root',
-    name: 'MTS',
+    name: 'МТС',
     type: 'Company',
     health: generateRandomHealth(),
     children: [],
@@ -203,4 +226,3 @@ export const getAllDescendantIds = (nodeId: string): string[] => {
   }
   return ids;
 };
-

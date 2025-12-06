@@ -1,3 +1,32 @@
+/* Global Reset */
+@font-face {
+  font-family: 'MTSText';
+  src: url('./assets/fonts/MTSText-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MTSText';
+  src: url('./assets/fonts/MTSText-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MTSText';
+  src: url('./assets/fonts/MTSText-Bold.woff2') format('woff2');
+  font-weight: 600; /* and 700 */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MTSText';
+  src: url('./assets/fonts/MTSText-Black.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
 :root {
   /* MTS Brand Colors */
   --mts-red: #FF0032;
@@ -6,7 +35,7 @@
   --mts-white: #FFFFFF;
   --mts-dark-gray: #6E7781;
   
-  font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'MTSText', 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
