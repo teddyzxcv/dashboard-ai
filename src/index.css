@@ -1,10 +1,18 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* MTS Brand Colors */
+  --mts-red: #FF0032;
+  --mts-black: #1D2023;
+  --mts-gray: #F2F3F7;
+  --mts-white: #FFFFFF;
+  --mts-dark-gray: #6E7781;
+  
+  font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color-scheme: dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #000000;
+
+  color-scheme: light;
+  color: var(--mts-black);
+  background-color: var(--mts-gray);
 }
 
 body {
@@ -13,6 +21,8 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  background-color: var(--mts-gray);
+  color: var(--mts-black);
 }
 
 #root {

@@ -67,19 +67,19 @@ const HealthGraph: React.FC<HealthGraphProps> = ({ onNodeHover }) => {
     // Draw Node
     ctx.beginPath();
     ctx.arc(node.x, node.y, radius, 0, 2 * Math.PI, false);
-    ctx.fillStyle = node.color || '#ffffff';
+    ctx.fillStyle = node.color || '#6E7781';
     ctx.fill();
     
-    // Draw Border (optional, for better visibility)
-    ctx.strokeStyle = '#000000';
-    ctx.lineWidth = 1.5 / globalScale;
+    // Draw Border (White border for separation on light bg)
+    ctx.strokeStyle = '#FFFFFF';
+    ctx.lineWidth = 2 / globalScale;
     ctx.stroke();
 
     // Draw Label
-    ctx.font = `${fontSize}px Sans-Serif`;
+    ctx.font = `600 ${fontSize}px Montserrat, sans-serif`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+    ctx.fillStyle = '#1D2023'; // MTS Black
     // Position text below the node
     ctx.fillText(label, node.x, node.y + radius + fontSize);
 
@@ -87,7 +87,7 @@ const HealthGraph: React.FC<HealthGraphProps> = ({ onNodeHover }) => {
     if (node.type === 'Employee') {
       const iconSize = radius * 1.2;
       // Draw a simple person-like shape or symbol
-      ctx.fillStyle = '#ffffff';
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
       // Head
       ctx.beginPath();
       ctx.arc(node.x, node.y - radius * 0.2, iconSize * 0.4, 0, 2 * Math.PI, false);
@@ -100,7 +100,7 @@ const HealthGraph: React.FC<HealthGraphProps> = ({ onNodeHover }) => {
   }, []);
 
   return (
-    <div style={{ width: '100vw', height: '100vh', backgroundColor: '#000' }}>
+    <div style={{ width: '100vw', height: '100vh', backgroundColor: '#F2F3F7' }}>
       <ForceGraph2D
         ref={fgRef}
         graphData={graphData}
@@ -115,8 +115,8 @@ const HealthGraph: React.FC<HealthGraphProps> = ({ onNodeHover }) => {
         }} 
         onNodeClick={handleNodeClick}
         onNodeHover={onNodeHover}
-        backgroundColor="#000000"
-        linkColor={() => '#ffffff50'}
+        backgroundColor="#F2F3F7"
+        linkColor={() => '#1D202320'} // Low opacity black for links
       />
     </div>
   );
