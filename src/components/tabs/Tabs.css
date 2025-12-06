@@ -2,9 +2,10 @@
   padding: 40px 60px;
   color: var(--mts-black);
   background-color: var(--mts-gray);
-  min-height: calc(100vh - 80px); /* Subtract navbar height */
+  height: 100%;
   font-family: 'MTSText', 'Montserrat', sans-serif;
   overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .tab-header {
