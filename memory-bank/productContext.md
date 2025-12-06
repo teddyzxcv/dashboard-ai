@@ -13,4 +13,11 @@ A dynamic, interactive force-directed graph that allows "drilling down" into spe
 4.  **Aesthetic**: A dark-themed, modern "dashboard" look suitable for a demo presentation.
 5.  **Localization**: Fully localized in Russian to suit the target audience.
 
+## Extended Capabilities (New Tabs)
+To demonstrate the platform's versatility, we are adding focused views:
+- **Product View**: Focuses on product metrics, MVP success, and operational efficiency.
+- **Team View**: Aggregates team performance and feedback.
+- **Employee View**: detailed ML-driven insights for individual employees, including competency mapping and retention risk (ML Model Dismissal).
+
+
 

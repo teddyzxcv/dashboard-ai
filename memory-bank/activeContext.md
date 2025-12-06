@@ -7,8 +7,10 @@ The application is functional and meets the user's initial requirements for a de
 - Custom visuals (labels, health colors, employee icons) are implemented.
 - UI Overlay shows detailed information.
 - **Data Model Update**: The mock data has been restructured to reflect the specific MTS Group hierarchy (Telecom, Ecosystem -> Fintech, Media, Adtech, Urent, MWS).
+- **Tabbed Interface**: Expanding the application to include dedicated tabs for "Product", "Team", and "Employee" alongside the existing graph demo.
 
 ## Recent Changes
+- **Documentation Update**: Updated project brief and context files to include new tab requirements.
 - **Mock Data Reorganization**: Updated `mockData.ts` to match the specific business unit and product structure provided in the Mermaid diagram.
   - Root: MTS Group.
   - Major branches: Telecom and Ecosystem.
@@ -21,9 +23,11 @@ The application is functional and meets the user's initial requirements for a de
 - Localized the entire application to Russian (UI, Documentation, Mock Data).
 
 ## Next Steps
-- Verify the graph visualization with the new deeper nesting (Ecosystem -> BUs -> Products).
+- Create `src/components/tabs` directory and components (`ProductTab`, `TeamTab`, `EmployeeTab`).
+- Implement navigation in `App.tsx`.
+- Flesh out the mock UI for each new tab based on the requirements (Charts, Forms, Triggers, etc.).
 - Verify the Russian translations and layout adjustments.
-- Present the demo.
+
 
 ## Active Decisions
 - **Visual Style**: Sticking to a dark high-contrast theme for dashboard appeal.
