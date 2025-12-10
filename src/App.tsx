@@ -15,7 +15,7 @@ function App() {
     <div className="app-container">
       {/* Navigation Bar */}
       <nav className="navbar">
-        <div className="nav-brand">MTS Dashboard</div>
+        <div className="nav-brand" onClick={() => setActiveTab('home')}>MTS Dashboard</div>
         <div className="nav-links">
           <button 
             className={`nav-link ${activeTab === 'home' ? 'active' : ''}`}

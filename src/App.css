@@ -42,6 +42,7 @@ body {
   letter-spacing: -0.5px;
   text-transform: uppercase;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
 .nav-links {
