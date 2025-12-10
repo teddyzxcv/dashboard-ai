@@ -25,3 +25,4 @@ The project uses two main representations of data:
 - **Performance**: `react-force-graph-2d` uses HTML5 Canvas, which performs well for the expected node count (~100-500), but expanding *all* nodes at once might clutter the view.
 
 
+
