@@ -1,13 +1,40 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import '../App.css';
+import GamepadImg from '../assets/Gamepad.png';
+import BubblesImg from '../assets/WniteBubbles.png';
+import GlassImg from '../assets/Glass.png';
+import ZavitokImg from '../assets/Zavitok.png';
 
 interface LandingPageProps {
   onNavigate: () => void;
 }
 
 const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const scrollTop = container.scrollTop;
+      container.style.setProperty('--scroll-y', `${scrollTop}px`);
+    };
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="landing-container">
+    <div className="landing-container" ref={containerRef}>
+      {/* Background Parallax Elements */}
+      <div className="landing-background">
+        <img src={GamepadImg} alt="" className="bg-gamepad" />
+        <img src={BubblesImg} alt="" className="bg-bubbles" />
+        <img src={GlassImg} alt="" className="bg-glass" />
+        <img src={ZavitokImg} alt="" className="bg-zavitok" />
+      </div>
+
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-content">
