@@ -51,6 +51,9 @@ const EmployeeTab: React.FC = () => {
         <div className="card">
           <h3>Личный дашборд</h3>
           <div className="card-content">
+            <div style={{ marginBottom: '16px' }}>
+              <span className="tag" style={{ backgroundColor: '#d1e7dd', color: '#0f5132' }}>Видно для сотрудника</span>
+            </div>
             <p>Индивидуальные метрики роста.</p>
             <div className="list-item">
               <span>Курсы пройдено: 3</span>
@@ -72,10 +75,37 @@ const EmployeeTab: React.FC = () => {
           </div>
         </div>
 
+        {/* Recommendation for Manager */}
+        <div className="card">
+          <h3>Рекомендация (Менеджеру)</h3>
+          <div className="card-content">
+            <div style={{ marginBottom: '16px' }}>
+              <span className="tag" style={{ backgroundColor: '#e3f2fd', color: '#0c5460' }}>Видно только для менеджера</span>
+            </div>
+            <p><strong>Цель:</strong> забота о ментальном здоровье сотрудника, а также его способности выполнять задачи</p>
+            <p style={{ marginTop: '12px' }}>Сотрудник Иван Иванов не был в отпуске уже 180 дней, возможно стоит предложить ему отпуск.</p>
+          </div>
+        </div>
+
+        {/* Recommendation for Employee */}
+        <div className="card">
+          <h3>Рекомендация (Сотруднику)</h3>
+          <div className="card-content">
+            <div style={{ marginBottom: '16px' }}>
+              <span className="tag" style={{ backgroundColor: '#d1e7dd', color: '#0f5132' }}>Видно для сотрудника</span>
+            </div>
+            <p><strong>Цель:</strong> забота о своем ментальном здоровье</p>
+            <p style={{ marginTop: '12px' }}>Наш помощник заметил, что вы давно не были в отпуске. Попробуйте спланировать, ваше здоровье превыше всего!</p>
+          </div>
+        </div>
+
         {/* ML Dismissal Model */}
         <div className="card" style={{ borderColor: '#d32f2f' }}>
           <h3>Прогноз увольнения (ML)</h3>
           <div className="card-content">
+            <div style={{ marginBottom: '16px' }}>
+              <span className="tag" style={{ backgroundColor: '#e3f2fd', color: '#0c5460' }}>Видно только для менеджера</span>
+            </div>
             <div className="metric-value" style={{ color: '#d32f2f' }}>High Risk</div>
             <div className="metric-label">Вероятность ухода в ближайшие 3 мес.</div>
             <button className="btn-action">Анализ причин / Удержание</button>
