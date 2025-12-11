@@ -1,4 +1,5 @@
 import React from 'react';
+import FormulaBuilder from '../formula/FormulaBuilder';
 import './Tabs.css';
 
 const TeamTab: React.FC = () => {
@@ -33,17 +34,6 @@ const TeamTab: React.FC = () => {
           </div>
         </div>
 
-        {/* Custom Dashboard */}
-        <div className="card">
-          <h3>Своя формула эффективности</h3>
-          <div className="card-content">
-            <div className="chart-placeholder" style={{ height: '80px' }}>
-              <span>Настройка метрик</span>
-            </div>
-            <p style={{ marginTop: '10px' }}>Настройте веса для оценки вклада участников.</p>
-          </div>
-        </div>
-
         {/* Triggers */}
         <div className="card">
           <h3>Триггеры команды</h3>
@@ -53,6 +43,11 @@ const TeamTab: React.FC = () => {
               <span className="tag warning">Warning</span>
             </div>
           </div>
+        </div>
+
+        {/* Custom Dashboard - Spanning full width if possible or just as a large card */}
+        <div className="card" style={{ gridColumn: '1 / -1' }}>
+          <FormulaBuilder />
         </div>
       </div>
     </div>
