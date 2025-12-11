@@ -3,7 +3,7 @@ import CompetencyMatrix from './CompetencyMatrix';
 import CompetencyRadar from './CompetencyRadar';
 import MetricTooltip from './MetricTooltip';
 import { getMockCompetencyData } from '../../data/mockData';
-import type { CompetencyWeights, SkillData } from '../../data/mockData';
+import type { CompetencyWeights } from '../../data/mockData';
 
 const CompetencySection: React.FC = () => {
   const [data] = useState(getMockCompetencyData());
@@ -110,6 +110,8 @@ const CompetencySection: React.FC = () => {
             weights={weights} 
             onWeightChange={handleWeightChange}
             isEditable={true}
+            onSkillSelect={setSelectedSkillId}
+            selectedSkillId={selectedSkillId}
           />
           
           <div className="ai-insight-box">

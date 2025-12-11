@@ -7,6 +7,8 @@ interface CompetencyMatrixProps {
   weights: CompetencyWeights;
   onWeightChange: (key: keyof CompetencyWeights, value: number) => void;
   isEditable?: boolean; // If true, allows editing weights directly in headers (optional, for management)
+  onSkillSelect?: (skillId: string) => void;
+  selectedSkillId?: string | null;
 }
 
 // Inner component to handle input state
@@ -54,7 +56,9 @@ const CompetencyMatrix: React.FC<CompetencyMatrixProps> = ({
   skills, 
   weights,
   onWeightChange,
-  isEditable = false
+  isEditable = false,
+  onSkillSelect,
+  selectedSkillId
 }) => {
   // Helper to calculate score (duplicating logic for display, but main logic should be centralized or passed down)
   const calculateScore = (skill: SkillData) => {
@@ -120,7 +124,12 @@ const CompetencyMatrix: React.FC<CompetencyMatrixProps> = ({
             const score = calculateScore(skill);
             const gap = parseFloat(calculateGap(skill));
             return (
-              <tr key={skill.id}>
+              <tr 
+                key={skill.id} 
+                onClick={() => onSkillSelect && onSkillSelect(skill.id)}
+                className={selectedSkillId === skill.id ? 'selected-row' : ''}
+                style={{ cursor: onSkillSelect ? 'pointer' : 'default', backgroundColor: selectedSkillId === skill.id ? 'rgba(229, 57, 53, 0.1)' : undefined }}
+              >
                 <td className="font-medium">{skill.name}</td>
                 <td>{skill.KD}</td>
                 <td>{skill.KB}</td>
