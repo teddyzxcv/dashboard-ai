@@ -1,5 +1,6 @@
 import React from 'react';
 import './Tabs.css';
+import CompetencySection from '../competency/CompetencySection';
 
 const EmployeeTab: React.FC = () => {
   return (
@@ -20,20 +21,9 @@ const EmployeeTab: React.FC = () => {
           </div>
         </div>
 
-        {/* Competency Map */}
-        <div className="card">
-          <h3>Карта компетенций</h3>
-          <div className="card-content">
-            <div className="chart-placeholder">
-              <span>Radar Chart</span>
-            </div>
-            <div style={{ marginTop: '10px' }}>
-              <span className="tag">Python</span>
-              <span className="tag">PyTorch</span>
-              <span className="tag">MLOps</span>
-              <span className="tag">Docker</span>
-            </div>
-          </div>
+        {/* Competency Map Expanded Section */}
+        <div className="card full-width">
+           <CompetencySection />
         </div>
 
         {/* Social Graph */}

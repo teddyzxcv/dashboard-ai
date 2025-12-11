@@ -204,3 +204,77 @@ export const getAllDescendantIds = (nodeId: string): string[] => {
   }
   return ids;
 };
+
+// --- Competency Data Types & Mock ---
+
+export interface CompetencyMetric {
+  KD: number; // Knowledge Depth
+  KB: number; // Knowledge Breadth
+  TC: number; // Task Complexity
+  PFN: number; // Peer Feedback Normalized
+}
+
+export interface CompetencyWeights {
+  KD: number;
+  KB: number;
+  TC: number;
+  PFN: number;
+}
+
+export interface SkillData extends CompetencyMetric {
+  id: string;
+  name: string;
+  SEL: number; // Skill Expected Level
+  RIF: number; // Role Impact Factor (could be per role, but simplifying to per skill context here)
+}
+
+export interface CompetencyData {
+  employeeId: string;
+  employeeName: string;
+  role: string;
+  skills: SkillData[];
+  defaultWeights: CompetencyWeights;
+  rif: number; // Role Impact Factor for the role overall if not per skill
+}
+
+export const getMockCompetencyData = (): CompetencyData => {
+  return {
+    employeeId: 'mock-emp-1',
+    employeeName: 'Иван Петров',
+    role: 'ML Engineer',
+    defaultWeights: { KD: 0.4, KB: 0.3, TC: 0.2, PFN: 0.1 },
+    rif: 1.1,
+    skills: [
+      {
+        id: 'python',
+        name: 'Python',
+        KD: 0.7,
+        KB: 0.5,
+        TC: 0.8,
+        PFN: 0.6,
+        SEL: 0.75,
+        RIF: 1.1
+      },
+      {
+        id: 'docker',
+        name: 'Docker',
+        KD: 0.4,
+        KB: 0.6,
+        TC: 0.5,
+        PFN: 0.5,
+        SEL: 0.7,
+        RIF: 1.0
+      },
+      {
+        id: 'mlops',
+        name: 'MLOps',
+        KD: 0.3,
+        KB: 0.4,
+        TC: 0.7,
+        PFN: 0.6,
+        SEL: 0.7,
+        RIF: 1.2
+      }
+    ]
+  };
+};
