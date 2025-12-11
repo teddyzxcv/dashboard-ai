@@ -1,34 +1,57 @@
 import React from 'react';
 import './Tabs.css';
+import OperationEfficiencyChart from '../charts/OperationEfficiencyChart';
+import DAUChart from '../charts/DAUChart';
+import TTMChart from '../charts/TTMChart';
 
 const ProductTab: React.FC = () => {
   return (
     <div className="tab-container">
       <div className="tab-header">
-        <h2>Оценка эффективности MVP и Продукта</h2>
+        <h2>Оценка эффективности Продукта</h2>
       </div>
       <div className="dashboard-grid">
-        {/* MVP Effectiveness */}
-        <div className="card">
-          <h3>Оценка эффективности MVP</h3>
-          <div className="card-content">
-            <div className="chart-placeholder">
-              <span>График эффективности</span>
-            </div>
-            <div className="metric-value">85%</div>
-            <div className="metric-label">Успешность MVP</div>
-          </div>
-        </div>
-
         {/* Operation Efficiency */}
         <div className="card">
           <h3>Оценка эффективности в эксплуатации</h3>
           <div className="card-content">
-            <div className="chart-placeholder">
-              <span>График эксплуатации</span>
+            <div style={{ height: '200px', width: '100%', marginBottom: '1rem' }}>
+              <OperationEfficiencyChart />
             </div>
             <div className="metric-value">92%</div>
             <div className="metric-label">Uptime / Stability</div>
+          </div>
+        </div>
+
+        {/* DAU */}
+        <div className="card">
+          <h3>DAU (Daily Active Users)</h3>
+          <div className="card-content">
+            <div style={{ height: '200px', width: '100%', marginBottom: '1rem' }}>
+              <DAUChart />
+            </div>
+            <div className="metric-value">1,950</div>
+            <div className="metric-label">Активные пользователи сегодня</div>
+          </div>
+        </div>
+
+        {/* TTM */}
+        <div className="card">
+          <h3>TTM (Time to Market)</h3>
+          <div className="card-content">
+            <div style={{ height: '200px', width: '100%', marginBottom: '1rem' }}>
+              <TTMChart />
+            </div>
+            <div className="metric-value">20 дней</div>
+            <div className="metric-label">Последний релиз</div>
+          </div>
+        </div>
+
+        {/* Other Metrics */}
+        <div className="card">
+          <h3>Другие метрики</h3>
+          <div className="card-content" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+             <p style={{ textAlign: 'center', color: '#666' }}>и другие метрики у вашего продукта</p>
           </div>
         </div>
 

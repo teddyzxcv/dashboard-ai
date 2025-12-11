@@ -15,7 +15,7 @@ A dynamic, interactive force-directed graph that allows "drilling down" into spe
 
 ## Extended Capabilities (New Tabs)
 To demonstrate the platform's versatility, we are adding focused views:
-- **Product View**: Focuses on product metrics, MVP success, and operational efficiency.
+- **Product View**: Focuses on product metrics and operational efficiency.
 - **Team View**: Aggregates team performance and feedback.
 - **Employee View**: detailed ML-driven insights for individual employees, including competency mapping and retention risk (ML Model Dismissal).
 

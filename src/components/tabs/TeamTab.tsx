@@ -1,5 +1,6 @@
 import React from 'react';
 import FormulaBuilder from '../formula/FormulaBuilder';
+import SprintBurndownChart from '../charts/SprintBurndownChart';
 import './Tabs.css';
 
 const TeamTab: React.FC = () => {
@@ -13,8 +14,8 @@ const TeamTab: React.FC = () => {
         <div className="card">
           <h3>Эффективность команды</h3>
           <div className="card-content">
-            <div className="chart-placeholder">
-              <span>Velocity / Sprint Burndown</span>
+            <div className="chart-placeholder" style={{ background: 'white', border: 'none', padding: 0, display: 'block' }}>
+              <SprintBurndownChart />
             </div>
             <div className="metric-value">42 SP</div>
             <div className="metric-label">Средняя скорость спринта</div>

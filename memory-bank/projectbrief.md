@@ -19,7 +19,6 @@ A web-based demonstration dashboard for visualizing the organizational health of
 The dashboard now includes specific demo tabs for different organizational levels:
 
 ### Product Tab
-- MVP Effectiveness Evaluation
 - Product Operational Efficiency
 - Anonymous Feedback (Product scope)
 - Custom Dashboard Builder
